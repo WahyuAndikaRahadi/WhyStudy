@@ -14,7 +14,7 @@ import {
   Menu, X
 } from 'lucide-react';
 
-const WAJIB_SUBJECTS = ['Matematika Wajib', 'Bahasa Indonesia', 'Bahasa Inggris'];
+const WAJIB_SUBJECTS = ['Matematika Wajib', 'Bahasa Indonesia Wajib', 'Bahasa Inggris Wajib'];
 
 const pageVariants = {
   initial: { opacity: 0, y: 16 },

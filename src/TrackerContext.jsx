@@ -23,7 +23,8 @@ export const TrackerProvider = ({ children }) => {
     const saved = localStorage.getItem('studyTrackerActiveOptionals');
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        return parsed.filter(s => ALL_PILIHAN_SUBJECTS.includes(s));
       } catch (e) {
         console.error(e);
       }
@@ -56,9 +57,9 @@ export const TrackerProvider = ({ children }) => {
           if (!parsed[subject]) {
             parsed[subject] = defaultData[subject];
           } else {
-            // Validate & migrate entries
+            // Validate & migrate entries based on topic name matching
             parsed[subject] = defaultData[subject].map((defaultRow, idx) => {
-              const savedRow = parsed[subject][idx] || {};
+              const savedRow = (parsed[subject] || []).find(r => r.topic === defaultRow.topic) || {};
               const understanding = savedRow.understanding || savedRow.level || 'Tidak paham';
               
               const newRow = {
