@@ -58,7 +58,7 @@ export const TrackerProvider = ({ children }) => {
             parsed[subject] = defaultData[subject];
           } else {
             // Validate & migrate entries based on topic name matching
-            parsed[subject] = defaultData[subject].map((defaultRow, idx) => {
+            parsed[subject] = defaultData[subject].map((defaultRow) => {
               const savedRow = (parsed[subject] || []).find(r => r.topic === defaultRow.topic) || {};
               const understanding = savedRow.understanding || savedRow.level || 'Tidak paham';
               
